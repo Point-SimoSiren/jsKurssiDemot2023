@@ -31,7 +31,23 @@
                 rekisterinumero: event.target.numberplate.value
             }
 
-            alert(newCar.rekisterinumero)
+            // Muutetaan auto olio json muotoon
+            let newCarJson = JSON.stringify(newCar)
+
+            let proceed = window.confirm("Add new car " + newCar.rekisterinumero + "?")
+            if (proceed === true) {
+                
+            let response = fetch('https://autoapicareeria.azurewebsites.net/api/autot', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: newCarJson
+            })
+
+            let result = response.json()
+            alert(result.message)
+            }
         }
 
         function getCarData() {
