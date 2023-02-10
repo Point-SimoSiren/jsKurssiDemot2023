@@ -8,7 +8,7 @@ let customers = [{id: 1, firstName: 'Jason', lastName: 'Langenbrunner', phone: '
 
  // Map funktio looppaa taulukon läpi
 
- customers.map(cust => console.log(cust.firstName + " " + cust.lastname))
+ customers.forEach(cust => cust.firstName === 'Marilyn' && console.log(cust.firstName + " " + cust.lastName))
 
  /*
  Sama operaatio for silmukalla:
