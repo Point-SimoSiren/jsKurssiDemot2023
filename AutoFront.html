@@ -9,12 +9,31 @@
 
          <h1>My Car Collection</h1>
 
+    <form style="max-width: 40%;" onsubmit="send(event)">
+        <input type="text" placeholder="Brand" name="brand" />
+        <input type="text" placeholder="Model" name="model" />
+        <input type="text" placeholder="Model year" name="year" />
+        <input type="text" placeholder="Number plate" name="numberplate" />
+        <input type="submit" value="Save"/>
+    </form>
 
     <div id="car-table"></div>
     <div id="load-div"></div>
 
-
     <script>
+
+        function send(event) {
+            event.preventDefault() // estää selaimen oletusarvoisen päivittämisen submitoinnissa
+            let newCar = {
+                merkki: event.target.brand.value,
+                malli: event.target.model.value,
+                vuosimalli: event.target.year.value,
+                rekisterinumero: event.target.numberplate.value
+            }
+
+            alert(newCar.rekisterinumero)
+        }
+
         function getCarData() {
                 document.getElementById("load-div").innerHTML = 
                 `<marquee width="60%" direction="down" height="30px">
