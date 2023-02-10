@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+    <meta charset="UTF-8">
+</header>
+
+<body>
+    <center>
+        <h1>Hello page</h1>
+        <button onclick="hei()">Vahvista tilaus</button>
+        <h3 id="paikka"></h3>
+    </center>
+
+    <script>
+
+        function hei() {
+
+            document.getElementById("paikka").innerText = "Tilaus vahvistettu!"
+            document.getElementById("paikka").style.backgroundColor = "green"
+            document.getElementById("paikka").style.color = "silver"
+            document.getElementById("paikka").style.width = "20%"
+
+            setTimeout(() => {
+                document.getElementById("paikka").innerText = ""
+            }, 2000)
+        }
+
+    </script>
+</body>
+
+</html>
