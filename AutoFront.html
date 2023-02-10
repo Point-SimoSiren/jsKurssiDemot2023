@@ -5,10 +5,10 @@
 
 </head>
 
-<body>
-    <marquee>
+<body style="margin: 2% 20% 4% 40%;">
+
          <h1>My Car Collection</h1>
-    </marquee>
+
 
     <div id="car-table"></div>
     <div id="load-div"></div>
@@ -16,7 +16,9 @@
 
     <script>
         function getCarData() {
-                document.getElementById("load-div").innerHTML = "<h3>Loading...</h3>"
+                document.getElementById("load-div").innerHTML = 
+                `<marquee width="60%" direction="down" height="30px">
+                    <h3>Loading...</h3></marquee>`
 
                 let carTable = `<table>
                                  <thead>
@@ -45,7 +47,7 @@
                 
                     document.getElementById("car-table").innerHTML = carTable
                     document.getElementById("load-div").innerHTML = null
-                }, 700)
+                }, 1000)
         }
 
         getCarData()
