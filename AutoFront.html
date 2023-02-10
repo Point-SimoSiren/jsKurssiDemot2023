@@ -11,15 +11,41 @@
     </marquee>
 
     <div id="car-table"></div>
+    <div id="load-div"></div>
 
 
     <script>
         function getCarData() {
-                document.getElementById("car-table").innerHTML = "<h3>Loading...</h3>"
+                document.getElementById("load-div").innerHTML = "<h3>Loading...</h3>"
+
+                let carTable = `<table>
+                                 <thead>
+                                    <tr>
+                                        <th>Brand</th>
+                                        <th>Model</th>
+                                        <th>Model year</th>
+                                        <th>Number plate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>`
 
                 fetch('https://autoapicareeria.azurewebsites.net/api/autot')
                 .then(res => res.json()) // muutetaan json data javascriptiksi
-                .then(data => console.log(data))
+                .then(data => data.map(car => 
+                carTable += `<tr>
+                                <td>${car.merkki}</td>
+                                <td>${car.malli}</td>
+                                <td>${car.vuosimalli}</td>
+                                <td>${car.rekisterinumero}</td>
+                            </tr>`
+                ) )
+                            
+                setTimeout(() => {
+                    carTable += `</tbody></table>`
+                
+                    document.getElementById("car-table").innerHTML = carTable
+                
+                }, 2000)
         }
 
         getCarData()
